@@ -572,7 +572,10 @@ function getPropertyType(
   };
   if (item.type) {
     result.typeName = item.type;
-    if (item.type == "integer") {
+    if (item.type == "integer" && item.format == "int64") {
+      result.typeName = "string";
+    }
+    if (item.type == "integer" && item.format == "int32") {
       result.typeName = "number";
     }
     if (item.type == "string" && item.format == "date") {

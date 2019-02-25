@@ -11,7 +11,7 @@ See [angular-swagger-form-field-sample](https://github.com/areijngoudt/angular-s
 Download the module with npm:
 
 ```bash
-npm install --save-dev swagger-ts-generator
+npm install --save-dev zm-swagger-to-ts
 ```
 
 # Usage in NodeJS
@@ -21,7 +21,7 @@ Create a simple `.js` file and run it using `node path/to/file.js`
 You can then run this from `npm` by adding the `node` line from above as a task in your `package.json`
 
 ```typescript
-const { generateTSFiles } = require("swagger-ts-generator");
+const { generateTSFiles } = require("zm-swagger-to-ts");
 
 const config = {
   file: __dirname + "\\swagger.json"
@@ -116,7 +116,7 @@ var gulp = require("gulp");
 
 var $ = require("gulp-load-plugins")({ lazy: true });
 var args = require("yargs").argv;
-var swaggerTSGenerator = require("swagger-ts-generator");
+var swaggerTSGenerator = require("zm-swagger-to-ts");
 var request = require("request");
 var source = require("vinyl-source-stream");
 

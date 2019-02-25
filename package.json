@@ -1,6 +1,6 @@
 {
-  "name": "swagger-ts-generator",
-  "version": "1.1.52",
+  "name": "zm-swagger-to-ts",
+  "version": "1.0.0",
   "description": "Given a swagger.json file, generates a number of TypeScript files which can be used as models and model-driven forms in Angular 2 (and above)",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/areijngoudt/swagger-ts-generator"
+    "url": "https://github.com/Anberm/zm-swagger-to-ts"
   },
-  "author": "Ad Reijngoudt <areijngoudt@gmail.com>",
+  "author": "anber<shuangyan_m@hotmail.com>",
   "license": "ISC",
   "dependencies": {
     "fs": "0.0.2",
