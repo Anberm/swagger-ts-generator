@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync, lstatSync, unlinkSync, rmdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { compile } from 'handlebars';
-import * as moment from 'moment';
+import { format } from 'date-fns'
 import { kebabCase, find, sortBy, toPairs, fromPairs } from 'lodash';
 import { SwaggerDefinition } from '../bootstrap/swagger';
 import { GeneratorOptions } from '../bootstrap/options';
@@ -126,6 +126,6 @@ export function removeExtension(file: string) {
 }
 
 export function log(message: string) {
-    let time = moment().format('HH:mm:SS');
+    let time = format('HH:mm:SS');
     console.log(`[${time}] ${message}`);
 }

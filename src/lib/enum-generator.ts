@@ -203,14 +203,14 @@ function removeEnumTypesWithSameValues(enumTypeCollection: EnumType[]) {
 
 function getEnumValuesAndLabels(enumValues: string[]) {
     let result: EnumTypeValueAndLabel[] = new Array();
-    forEach(enumValues, value => {
+    forEach(enumValues, (value: any) => {
         const valueAndLabel = {
             value,
             // only convert label when the value contains not only uppercase chars and length > 3
             // (only uppercase with short length are considered codes like Country or Currency)
             label: upperCase(value) === value && value.length <= 3 ?
                 value :
-                startCase(value.toLowerCase())
+                startCase(typeof value === 'string' ? value.toLowerCase() : typeof value === 'number' ? (value).toString() : value.toString())
         };
         result.push(valueAndLabel);
     });

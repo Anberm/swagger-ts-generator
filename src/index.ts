@@ -11,6 +11,8 @@ import {
   generateEnumI18NHtmlFile,
   generateEnumLanguageFiles
 } from "./lib/enum-generator";
+import * as request from 'request';
+import * as rp from 'request-promise';
 
 const TEMPLATE_FOLDER = resolve(__dirname, "templates");
 
@@ -27,7 +29,7 @@ const TEMPLATE_FOLDER = resolve(__dirname, "templates");
 *                 .modelModuleName: the name of the model module (aka namespace)
 *                 .enumModuleName: the name of the enum module (aka namespace)
 */
-export function generateTSFiles(
+export async function generateTSFiles(
   swaggerInput: string | Swagger,
   options: GeneratorOptions
 ) {
@@ -40,10 +42,31 @@ export function generateTSFiles(
     throw "options must be defined";
   }
 
-  let swagger =
-    typeof swaggerInput === "string"
-      ? (JSON.parse(readFileSync(swaggerInput, ENCODING).trim()) as Swagger)
-      : swaggerInput;
+  let swagger;
+  if (typeof swaggerInput === "string") {
+    if (swaggerInput.startsWith('http://') || swaggerInput.startsWith('https://')) {
+      const rpOption = {
+        method: 'GET',
+        uri: swaggerInput,
+        strictSSL:false,
+        json: true // Automatically stringifies the body to JSON
+      };
+      // rp(rpOption).then(function (parsedBody) {
+      //   console.log(parsedBody);
+      // })
+      //   .catch(function (err) {
+      //     // POST failed...
+      //     console.log(err);
+      //   });
+      swagger = await rp(rpOption);
+      // console.log(swagger);
+    } else {
+      swagger = JSON.parse(readFileSync(swaggerInput, ENCODING).trim()) as Swagger;
+    }
+  } else {
+    swagger = swaggerInput;
+  }
+
 
   if (typeof swagger !== "object") {
     throw new TypeError("The given swagger input is not of type object");

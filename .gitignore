@@ -6,3 +6,4 @@ NULL.log
 # Compiled js
 **/*.js
 **/*.d.ts
+models
