@@ -1,6 +1,6 @@
 {
   "name": "zm-swagger-to-ts",
-  "version": "1.0.0",
+  "version": "0.0.6",
   "description": "Given a swagger.json file, generates a number of TypeScript files which can be used as models and model-driven forms in Angular 2 (and above)",
   "main": "index.js",
   "scripts": {
